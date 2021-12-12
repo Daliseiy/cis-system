@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block content%}
+
+{% for data in citizen %}
+<h3 class="text-center display-3 pt-3 text-white"> Facial Match Found</h3>
+<br>
+<br>
+<br>
+
+
+<div class="result-box">
+    <div class="row ">
+        <div class="col-md-4">
+            <img  width="240" height="240" src="{{ data.image.url }}" alt="" srcset="">
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <h5 class="col-12"> Surname:{{ data.surname }}</h5>
+                <h5 class="col"> First Name:{{ data.first_name }}</h5>
+                <h5 class="col"> Other Name:{{data.other_name }}</h5>
+            </div>
+            <div class="row">
+                <h5 class="col">Date of Birth:{{ data.date_of_birth }}</h5>
+                <h5 class="col">State:{{ data.state_of_origin }}</h5>
+            </div> 
+            <div class="row">
+                <h5 class="col"> Gender:{{ data.sex }}</h5>
+                <h5 class="col">NID:{{data.national_id }}</h5>
+            </div>
+            <div class="row">
+                <h5 class="col">Marital Status:{{ data.marital_status }}</h5>
+                <h5 class="col">Occupation:{{data.occupation }}</h5>
+            </div>
+                <a class="btn btn-lg btn-success float-right mr-5 mt-3" href="{{data.get_absolute_url}}">View</a>
+            
+        </div>
+    </div>
+</div>
+
+
+{% endfor %}
+
+
+{% endblock %}

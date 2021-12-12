@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title%}
+    View Profile
+{%endblock title%}
+
+{% block header%}
+    View Data
+{% endblock header%}
+    
+
+{% block content %}
+
+<h1 class="display-3 text-center p-3 text-white">Profile Information</h1>
+<div class="title-underline"></div>
+<h3>Personal Information</h3>
+<div class="container ml-3">
+    <div class="row ">
+        <div class="col-sm-3 ml-5 mr-1">
+            <img  class="profile-image" width="300" height="280" src="{{ citizen.image.url }}" alt="">
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <p>Surname:{{citizen.surname}}</p>
+                </div>
+                <div class="col">
+                <p>First Name:{{citizen.first_name}}</p>
+                    
+                </div>
+                <div class="col">
+                <p>Other Name:{{citizen.other_name}}</p>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="row ">
+                    <div class="col">
+                        <p>Sex: {{citizen.sex}}</p>
+                    </div>
+                    <div class="col">
+                        <p>Date of Birth:{{citizen.date_of_birth}} </p>   
+                    </div>
+                    <div class="col">
+                        <p>Language Spoken:{{citizen.language_spoken}}</p> 
+                    </div>
+                    <div class="col">
+                        <p>National ID: {{citizen.national_id}}</p>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                    <div class="col-12">
+                        <p>Siblings: {{citizen.name_of_siblings}}</p>
+                    </div>
+                <br>
+                <br>
+                <br>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                    <p>Father:{{citizen.name_of_father}}</p>
+                    </div>
+                    <div class="col-sm-6">
+                    <p>Mother:{{citizen.name_of_mother}}</p>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div class="title-underline"></div>
+<h3>Marital Information</h3>
+<div class="row">
+    <div class="col">
+        <p>Spouse(s): {{citizen.name_of_spouse}}</p> 
+    </div>
+    <div class="col">
+        <p>Marital Status: {{citizen.marital_status}}</p>
+    </div>
+    <div class="col">
+        <p>Marriage Information:{{citizen.marriage_information}}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <p>Name of Child(ren): {{citizen.name_of_children}}</p>
+    </div>
+</div>
+<hr>
+
+<div class="title-underline"></div>
+<h3>Residential Information</h3>
+
+<div class="row">
+    <div class="col">
+        <p>State of Origin:{{citizen.state_of_origin}} </p>
+    </div>
+    <div class="col">
+        <p>State of Residence:{{citizen.state_of_residence}}</p>
+    </div>
+    <div class="col">
+        <p>Local Government Area:{{citizen.LGA}} </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+    <p>Residential Address:{{citizen.residential_address}}</p>
+    </div>
+</div>
+
+
+<div class="title-underline"></div>
+<h3>Contact Information</h3>
+<div class="row">
+    <div class="col">
+<p>Phone Number:{{citizen.phone_number}}</p>
+        
+    </div>
+    <div class="col"> 
+<p>Other Number: {{citizen.other_number}}</p>
+    </div>
+    <div class="col">
+<p>Email:{{citizen.email}}</p>
+
+    </div>
+</div>
+
+<div class="title-underline"></div>
+<h3>Health Information</h3>
+<div class="row">
+    <div class="col">
+    <p>Blood Type: {{citizen.blood_type}}</p>    
+    </div>
+    <div class="col">
+    <p>Genotype:{{citizen.genotype}}</p>    
+    </div>
+    <div class="col">
+    <p>Height:{{citizen.height}}</p>    
+    </div>
+    <div class="col">
+    <p>weight:{{citizen.weight}}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <p>Disability:{{citizen.disability}}</p>
+    </div>
+</div>
+
+<div class="title-underline"></div>
+
+<h3>Work and Educational Information</h3>
+<div class="row">
+    <div class="col">
+        <p>Occupation: {{citizen.occupation}}</p>
+    </div>
+    <div class="col">
+        <p>Work Experience: {{citizen.work_experience}}</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <p>Primary Education:{{citizen.primary_education}}</p>
+
+    </div>
+    <div class="col">
+        <p>Secondary Education:{{citizen.secondary_education}}</p>
+
+    </div>
+    <div class="col">
+        <p>University/College Education: {{citizen.university_education}} </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <p>Academic Qualification:{{citizen.academic_qualifications}}</p>
+    </div>
+</div>
+
+
+
+<div class="row justify-content-center">
+    <a class="btn btn-success mx-5 my-2 " href="{% url 'update_data' citizen.pk%}">+ Update Profile</a>
+    
+    <a class="btn btn-danger mx-5 my-2 " href="{% url 'delete_data' citizen.pk%}">+ Delete Profile</a>
+    
+</div>
+
+{% endblock content%}

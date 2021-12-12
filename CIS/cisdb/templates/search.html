@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Search{% endblock %}
+
+
+{% block content %}
+  {% if query %}
+
+    <h3>
+      {% with results.count as total_results %}
+          Found {{ total_results }} result{{ total_results|pluralize }} for {{query}}
+      {% endwith %}
+    </h3>
+    {% for data in results %}
+        <div class="section">
+        <div class="container"></div>
+          <h4><a href="{{ data.get_absolute_url }}">{{ data.last_name }}  {{data.first_name}} {{ data.other_name }}</a></h4>
+        </div>
+    {% empty %}
+      <p>There are no results for your query.</p>
+    {% endfor %}
+    <a href="{% url "search_data" %}" class="btn btn-warning">Search again</a>
+  {% else %}
+
+  <h1 class="display-3 text-center text-white">City Support System (CSS)</h1>
+        <br>
+  <div class="row my-4 justify-content-center">
+    <form action="." method="get">
+    <div class="row justify-content-center">
+        {{ form.query }}
+        <button class="btn btn-success mx-3 " type="submit">
+          <i class="fa fa-search"></i>
+        </button> 
+    </div>
+    </form>
+  </div>
+  <br>
+  
+  <div class="container ml-5">
+    <div class="row ">
+      <div class="col">
+        <div class="card " style="width: 12rem; height: 10rem;">
+          <div class="card-body  text-center">
+            <a href="{% url 'create_data' %}"><i class="fa fa-user-plus fa-4x text-color"></i></a>
+            <h5 class="text-center p-3">Create Profile</h5>
+          </div>
+        </div>
+      </div>
+      <!--end of card-->
+      <div class="col">
+        <div class="card " style="width: 12rem; height: 10rem;">
+          <div class="card-body  text-center">
+            <a href="{% url 'match_data' %}"><i class="fas fa-user fa-4x text-color "></i></a>
+            <h5 class="text-center  p-3">Facial Recognition</h5>
+          </div>
+        </div>
+      </div>
+      <!--end of card-->
+      <div class="col">
+        <div class="card text-center" style="width: 12rem; height: 10rem;">
+          <div class="card-body">
+            <a href=""><i class="fas fa-fingerprint fa-4x text-color"></i></a>
+            <h5 class="text-center  p-3">Biometric Matching</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!--end of row 1-->
+    <div class="row py-3 ">
+  
+      <div class="col">
+        <div class="card text-center" style="width: 12rem; height: 10rem;">
+          <div class="card-body">
+            <a href=""><i class="fas fa-dna fa-4x text-color"></i></a>
+            <h5 class="text-center  p-3">DNA Analysis</h5>
+          </div>
+        </div>
+      </div>
+      <!--end of card-->
+      <!--beginning  of card-->
+      <div class="col">
+        <div class="card text-center" style="width: 12rem; height: 10rem;">
+          <div class="card-body">
+            <a href=""><i class="fa fa-map-marker fa-4x text-color"></i></a>
+            <h5 class="text-center  p-3">Mapping Services</h5>
+            
+          </div>
+        </div>
+      </div>
+      <!--end of card-->
+      <!--beginning  of card-->
+      <div class="col">
+        <div class="card text-center" style="width: 12rem; height: 10rem;">
+          <div class="card-body">
+            <a href=""><i class="fas fa-chart-bar fa-4x text-color"></i></a>
+            <h5 class="text-center  p-3">Data Visualisation</h5>
+          </div>
+        </div>
+      </div>
+      <!--end of card-->
+    </div>
+  </div>
+
+    
+  {% endif %}
+{% endblock %}

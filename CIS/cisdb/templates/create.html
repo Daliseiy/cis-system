@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title%}
+    Create Profile
+{%endblock title%}
+
+{% block header%}
+    Create Data
+{% endblock header%}
+
+{% block content %}
+
+<h1 class="text-center display-2 text-light">Profile Creation Form</h1>
+<form method="POST" action="">
+    {% csrf_token %}
+    <div class="form-row  d-flex align-content-between">
+        <div class="col m-2">{{ form.surname|as_crispy_field }}</div>
+        <div class="col m-2">{{ form.first_name|as_crispy_field }}</div>
+       <div class="col m-2">{{ form.other_name| as_crispy_field }}</div>
+    </div>
+    <div class="form-row">
+        <div class="col m-2">{{form.sex|as_crispy_field}}</div>
+        <div class="col-md-6 m-2">{{form.date_of_birth|as_crispy_field}}</div>
+        <div class="col m-2">{{form.marital_status|as_crispy_field}}</div>
+        
+    </div>
+   <div class="form-row">
+        <div class="col m-2">{{form.name_of_father|as_crispy_field}}</div>
+        <div class="col m-2">{{form.name_of_mother|as_crispy_field}}</div>
+        <div class="col m-2">{{form.name_of_spouse|as_crispy_field}}</div>
+   </div>
+   <div class="form-row">
+       <div class="col m-2">{{form.name_of_siblings|as_crispy_field}}</div>
+   </div>
+   <div class="form-row">
+       <div class="col m-2">{{form.marriage_information|as_crispy_field}}</div>
+   </div>
+   <div class="form-row">
+       <div class="col">{{form.name_of_children|as_crispy_field}}</div>
+   </div>
+   <div class="form-row">
+       <div class="col m-2">{{form.state_of_origin|as_crispy_field}}</div>
+       <div class="col m-2">{{form.LGA|as_crispy_field}}</div>
+       <div class="col m-2">{{form.state_of_residence|as_crispy_field}}</div>
+   </div>
+   <div class="form-row">
+       <div class="col ">
+           {{form.residential_address|as_crispy_field}}
+       </div>
+   </div>
+   <div class="form-row">
+       <div class="col m-2">{{form.phone_number|as_crispy_field}}</div>
+       <div class="col m-2">{{form.other_number|as_crispy_field}}</div>
+       <div class="col m-2">{{form.email|as_crispy_field}}</div>
+   </div>
+   <div class="form-row">
+       <div class="col m-2">{{form.national_id|as_crispy_field}}</div>
+       <div class="col m-2">{{form.language_spoken|as_crispy_field}}</div>
+   </div>
+   <div class="form-row">
+    <div class="col m-2">{{form.blood_type|as_crispy_field}}</div>
+    <div class="col m-2">{{form.genotype|as_crispy_field}}</div>
+    <div class="col m-2">{{form.height|as_crispy_field}}</div>
+    <div class="col m-2">{{form.weight|as_crispy_field}}</div>
+   </div>
+   <div class="form-row">
+       <div class="col m-2">{{form.disability|as_crispy_field}}</div>
+   </div>
+   <div class="form-row">
+    <div class="col m-2">{{form.allergies|as_crispy_field}}</div>
+    </div>
+   <div class="form-row">
+       <div class="col m-2">{{form.occupation|as_crispy_field}}</div>
+   </div>
+   <div class="form-row">
+    <div class="col m-2">{{form.primary_education|as_crispy_field}}</div>
+    <div class="col m-2">{{form.secondary_education|as_crispy_field}}</div>
+   </div>
+   <div class="form-row">
+    <div class="col m-2">{{form.academic_qualifications|as_crispy_field}}</div>
+    <div class="col m-2">{{form.work_experience|as_crispy_field}}</div>
+   </div>
+   <div class="form-row">
+    <div class="col">
+        {{form.university_education|as_crispy_field}}
+    </div>
+</div>
+<div class="form-row">
+    <div class="col m-2 text-white">{{form.image|as_crispy_field}}</div>
+ 
+   </div>
+
+    <div class="row justify-content-center ">
+        <button class="btn btn-success mb-3"type="submit">Create Profile</button>
+    </div>
+</form>
+{% endblock content %}

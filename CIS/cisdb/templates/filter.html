@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<h3 class="text-center text-white display-3">Data  Claasification </h3>
+<form method="GET" action="." class="pt-3">
+    
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="name_conatains">Name</label>
+            <input class="form-control" type="text" id="name_contains" placeholder="Enter name" name="name_contains" >
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col form-group">
+            <label for="lga_query">LGA</label>
+            <input class="form-control" placeholder="Local Government Area" type="text" name="lga_query" id="lga_query" >
+        </div>
+        <div class="col form-group">
+            <label for="occupation_query">Occupation</label>
+            <input class="form-control" placeholder="Occupation" type="text" name="occupation_query" id="occupation_query" >
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col form-group">
+            <label for="mindate">Minimum Date</label>
+            <input class="form-control" type="date" name="date_min" id="mindate">
+        </div>
+        <div class="col form-group">
+            <label for="maxdate">Maximum Date</label>
+            <input class="form-control"  type="date" name="date_max" id="maxdate" >
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col">
+            {{ form.gender|as_crispy_field}}
+        </div>
+        <div class="col">
+            {{ form.genotype|as_crispy_field}}
+        </div>
+        <div class="col">
+            {{ form.blood_group|as_crispy_field}}
+        </div>
+        <div class="col">
+            {{ form.state|as_crispy_field}}
+        </div>
+       
+        <div class="col">
+            {{ form.state_residence|as_crispy_field}}
+        </div>
+    </div>
+
+    <input class="btn btn-lg btn-primary" type="submit" value="Filter">
+</form>
+
+{% for data in queryset %}
+<div class="result-box">
+    <div class="row ">
+        <div class="col-md-4">
+            <img  width="240" height="240" src="{{ data.image.url }}" alt="" srcset="">
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <h5 class="col-12"> Surname:{{ data.surname }}</h5>
+                <h5 class="col"> First Name:{{ data.first_name }}</h5>
+                <h5 class="col"> Other Name:{{data.other_name }}</h5>
+            </div>
+            <div class="row">
+                <h5 class="col">Date of Birth:{{ data.date_of_birth }}</h5>
+                <h5 class="col">State:{{ data.state_of_origin }}</h5>
+            </div> 
+            <div class="row">
+                <h5 class="col"> Gender:{{ data.sex }}</h5>
+                <h5 class="col">NID:{{data.national_id }}</h5>
+            </div>
+            <div class="row">
+                <h5 class="col">Marital Status:{{ data.marital_status }}</h5>
+                <h5 class="col">Occupation:{{data.occupation }}</h5>
+            </div>
+                <a class="btn btn-lg btn-success float-right mr-5 mt-3" href="{{data.get_absolute_url}}">View</a>
+            
+        </div>
+    </div>
+</div>
+   
+{% endfor %}
+
+<p class="pb-5"></p>
+
+
+{% endblock %}

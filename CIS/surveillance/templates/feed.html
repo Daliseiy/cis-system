@@ -1,0 +1,26 @@
+{% extends './base.html'%}
+
+
+{% block content%}
+
+<html>
+  <head>
+    <title>Video Live Stream Test</title>
+  </head>
+  <body>
+    <h1 class="text-center text-white ">Live Feed Stream</h1>
+    <div class="row">
+      <div class="col">
+        <h3> Footage 1</h3>
+        <img src="{% url 'video_feed' %}">
+      </div>
+      <div class="col">
+        <h3>Footage 2</h3>
+        <img src="{% url 'webcam_feed' %}">
+      </div>
+    </div>
+   
+  </body>
+</html>
+
+{% endblock %}
